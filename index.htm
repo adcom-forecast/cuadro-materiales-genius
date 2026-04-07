@@ -165,13 +165,22 @@ async function loadMes(){
 }
 
 function parseCSV(t){
-  const ls=t.trim().split('\n');
-  if(ls.length<2)return[];
-  return ls.slice(1).map(l=>{
+  t=t.replace(/\r\n/g,'\n').replace(/\r/g,'\n');
+  const rows=[],n=t.length;let i=0;
+  while(i<n&&t[i]!=='\n')i++;i++;
+  while(i<n){
     const cols=[];let cur='',q=false;
-    for(let c of l){if(c==='"'){q=!q;continue;}if(c===','&&!q){cols.push(cur.trim());cur='';continue;}cur+=c;}
-    cols.push(cur.trim());return cols;
-  }).filter(r=>r.some(c=>c!==''));
+    while(i<n){
+      const c=t[i];i++;
+      if(c==='"'){if(q&&t[i]==='"'){cur+='"';i++;}else q=!q;}
+      else if(c===','&&!q){cols.push(cur.trim());cur='';}
+      else if(c==='\n'&&!q){break;}
+      else{cur+=c;}
+    }
+    cols.push(cur.trim());
+    if(cols.some(c=>c!==''))rows.push(cols);
+  }
+  return rows;
 }
 
 function renderAll(rows){renderStats(rows);renderFilters(rows);renderTabla(rows);}
