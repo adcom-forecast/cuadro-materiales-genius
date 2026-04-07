@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Geniusbet] Cuadro de Materiales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --surface: #161616;
+    --surface2: #1e1e1e;
+    --surface3: #252525;
+    --border: #2a2a2a;
+    --border2: #333;
+    --text: #f0ede8;
+    --text2: #888;
+    --text3: #555;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,0.12);
+    --meta: #1877F2;
+    --tiktok: #ff2d55;
+    --google: #4285F4;
+    --display: #a78bfa;
+    --pending: #f59e0b;
+    --wip: #60a5fa;
+    --done: #34d399;
+    --pending-bg: rgba(245,158,11,0.12);
+    --wip-bg: rgba(96,165,250,0.12);
+    --done-bg: rgba(52,211,153,0.12);
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'Instrument Sans', sans-serif;
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+  }
+
+  .header-left { display: flex; align-items: center; gap: 20px; }
+
+  .logo {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-dot {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .divider-v {
+    width: 1px; height: 20px;
+    background: var(--border2);
+  }
+
+  .client-name {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text2);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .header-right { display: flex; align-items: center; gap: 10px; }
+
+  .last-update {
+    font-size: 11px;
+    color: var(--text3);
+    font-family: monospace;
+  }
+
+  .btn {
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0d0d0d;
+  }
+  .btn-primary:hover { background: #d4ff1a; }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text2);
+    border: 1px solid var(--border2);
+  }
+  .btn-ghost:hover { color: var(--text); border-color: #555; }
+
+  .spin { display: inline-block; }
+  .spinning { animation: spin 0.7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── TABS (meses) ── */
+  .tabs-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    overflow-x: auto;
+  }
+
+  .tab {
+    padding: 12px 18px 10px;
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--text3);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    white-space: nowrap;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .tab:hover { color: var(--text2); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ── MAIN ── */
+  main { padding: 28px 32px; max-width: 1600px; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 14px 20px;
+    min-width: 120px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 4px;
+  }
+
+  .stat-value {
+    font-family: var(--font-head);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .stat-value.accent { color: var(--accent); }
+
+  /* ── FILTROS ── */
+  .filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter-label {
+    font-size: 11px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-right: 4px;
+  }
+
+  .filter-chip {
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text2);
+    font-family: var(--font-body);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .filter-chip:hover { border-color: #555; color: var(--text); }
+  .filter-chip.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+
+  /* ── GRUPO OBJETIVO ── */
+  .objetivo-group { margin-bottom: 28px; }
+
+  .objetivo-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .objetivo-title {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    text-transform: uppercase;
+  }
+
+  .objetivo-count {
+    font-size: 11px;
+    color: var(--text3);
+    background: var(--surface2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+
+  /* ── TABLA ── */
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  thead tr {
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border2);
+  }
+
+  th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--surface2); }
+
+  /* adaptación visual */
+  tbody tr.is-adaptation {
+    background: rgba(200,255,0,0.02);
+  }
+  tbody tr.is-adaptation td:first-child {
+    padding-left: 28px;
+    position: relative;
+  }
+  tbody tr.is-adaptation td:first-child::before {
+    content: '↳';
+    position: absolute;
+    left: 12px;
+    color: var(--text3);
+    font-size: 12px;
+  }
+
+  td {
+    padding: 11px 14px;
+    color: var(--text);
+    font-size: 13px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  td.wrap { white-space: normal; word-break: break-word; }
+
+  /* Anchos de columna */
+  .col-pieza    { width: 160px; }
+  .col-canal    { width: 110px; }
+  .col-formato  { width: 100px; }
+  .col-dim      { width: 100px; }
+  .col-tipo     { width: 70px; }
+  .col-cant     { width: 60px; text-align: center; }
+  .col-copy     { width: auto; }
+  .col-obs      { width: 160px; }
+  .col-adapt    { width: 140px; }
+  .col-link     { width: 90px; }
+  .col-estado   { width: 110px; }
+  .col-cliente  { width: 160px; }
+
+  /* ── BADGES ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .badge-meta    { background: rgba(24,119,242,0.15); color: #60a5fa; }
+  .badge-tiktok  { background: rgba(255,45,85,0.15);  color: #f472b6; }
+  .badge-google  { background: rgba(66,133,244,0.15); color: #93c5fd; }
+  .badge-display { background: rgba(167,139,250,0.15);color: #c4b5fd; }
+
+  .dot-meta    { background: #1877F2; }
+  .dot-tiktok  { background: #ff2d55; }
+  .dot-google  { background: #4285F4; }
+  .dot-display { background: #a78bfa; }
+
+  /* estados */
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .status-pending { background: var(--pending-bg); color: var(--pending); }
+  .status-wip     { background: var(--wip-bg);     color: var(--wip); }
+  .status-done    { background: var(--done-bg);    color: var(--done); }
+  .status-empty   { background: var(--surface3);   color: var(--text3); }
+
+  /* link pieza */
+  .link-pieza {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border: 1px solid rgba(200,255,0,0.25);
+    border-radius: 4px;
+    transition: all 0.15s;
+  }
+
+  .link-pieza:hover { background: var(--accent-dim); }
+
+  .no-link { color: var(--text3); font-size: 12px; }
+
+  /* adaptación tag */
+  .adapt-tag {
+    font-size: 11px;
+    color: var(--text3);
+    background: var(--surface3);
+    padding: 2px 7px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    display: inline-block;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  /* dimensiones mono */
+  .dim {
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--text2);
+  }
+
+  /* cantidad */
+  .cant {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    display: block;
+  }
+
+  /* ── EMPTY / LOADING ── */
+  .state-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 12px;
+    color: var(--text3);
+  }
+
+  .state-box svg { opacity: 0.3; }
+  .state-box p { font-size: 14px; }
+
+  /* ── ERROR ── */
+  .error-bar {
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.3);
+    color: #f87171;
+    padding: 12px 20px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    margin-bottom: 20px;
+    display: none;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <div class="logo">
+      <span class="logo-dot"></span>
+      Adcom
+    </div>
+    <div class="divider-v"></div>
+    <span class="client-name">Geniusbet</span>
+  </div>
+  <div class="header-right">
+    <span class="last-update" id="lastUpdate">—</span>
+    <button class="btn btn-ghost" onclick="exportCSV()">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+      </svg>
+      Exportar
+    </button>
+    <button class="btn btn-primary" id="btnRefresh" onclick="loadMes()">
+      <svg class="spin" id="spinIcon" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path d="M23 4v6h-6M1 20v-6h6"/>
+        <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+      </svg>
+      Actualizar
+    </button>
+  </div>
+</header>
+
+<!-- TABS MESES -->
+<div class="tabs-bar" id="tabsBar">
+  <!-- Los tabs se generan desde el array MESES -->
+</div>
+
+<!-- MAIN -->
+<main>
+  <div class="error-bar" id="errorBar"></div>
+  <div class="stats-bar" id="statsBar"></div>
+  <div class="filters" id="filtersBar"></div>
+  <div id="contenido"></div>
+</main>
+
+<script>
+// ============================================================
+// ► CONFIGURACIÓN — EDITAR AQUÍ CUANDO AGREGUES MÁS MESES
+// ============================================================
+const MESES = [
+  {
+    nombre: "Abril 2026",
+    url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQsYfkdp8BlwmYh9zgOpfJrV_xSkPYGqJZw3NR6IypqMBgteBRh8EcfnopbkAqhYB_2l4IN4CxPx2Rq/pub?output=csv"
+  },
+  // ── AGREGAR MESES NUEVOS AQUÍ ──────────────────────────────
+  // { nombre: "Mayo 2026",  url: "URL_CSV_MAYO_2026" },
+  // { nombre: "Junio 2026", url: "URL_CSV_JUNIO_2026" },
+  // Pasos para obtener la URL de cada nueva pestaña:
+  // 1. En el Sheet: Archivo → Compartir → Publicar en la web
+  // 2. Selecciona la pestaña del mes en el dropdown
+  // 3. Selecciona formato CSV
+  // 4. Copia la URL y pégala arriba
+  // ──────────────────────────────────────────────────────────
+];
+
+// Columnas (índices base 0, según orden del Sheet)
+const COL = {
+  objetivo:  0,
+  pieza:     1,
+  canal:     2,
+  formato:   3,
+  dims:      4,
+  tipo:      5,
+  cantidad:  6,
+  copy:      7,
+  obs:       8,
+  adaptDe:   9,
+  link:      10,
+  estado:    11,
+  cliente:   12,
+};
+// ============================================================
+
+let mesActivo = 0;
+let datosCache = {};
+let filtroCanal = "Todos";
+let filtroEstado = "Todos";
+
+// ── INIT ──
+function init() {
+  renderTabs();
+  loadMes();
+}
+
+function renderTabs() {
+  const bar = document.getElementById('tabsBar');
+  bar.innerHTML = MESES.map((m, i) =>
+    `<button class="tab ${i === mesActivo ? 'active' : ''}" onclick="switchMes(${i})">${m.nombre}</button>`
+  ).join('');
+}
+
+function switchMes(i) {
+  mesActivo = i;
+  filtroCanal = "Todos";
+  filtroEstado = "Todos";
+  renderTabs();
+  if (datosCache[i]) {
+    renderAll(datosCache[i]);
+  } else {
+    loadMes();
+  }
+}
+
+// ── FETCH CSV ──
+async function loadMes() {
+  const btn = document.getElementById('btnRefresh');
+  const icon = document.getElementById('spinIcon');
+  btn.disabled = true;
+  icon.classList.add('spinning');
+  document.getElementById('errorBar').style.display = 'none';
+
+  const mes = MESES[mesActivo];
+  // Cachebust para evitar datos viejos
+  const url = mes.url + (mes.url.includes('?') ? '&' : '?') + '_cb=' + Date.now();
+
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const text = await res.text();
+    const rows = parseCSV(text);
+    datosCache[mesActivo] = rows;
+    renderAll(rows);
+    document.getElementById('lastUpdate').textContent =
+      'Actualizado: ' + new Date().toLocaleTimeString('es-CO', {hour:'2-digit', minute:'2-digit'});
+  } catch (e) {
+    showError('No se pudo cargar el Sheet. Verifica que esté publicado como CSV. (' + e.message + ')');
+  } finally {
+    btn.disabled = false;
+    icon.classList.remove('spinning');
+  }
+}
+
+// ── CSV PARSER ──
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  if (lines.length < 2) return [];
+  // Saltar header (fila 0)
+  return lines.slice(1).map(line => {
+    const cols = [];
+    let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') { inQ = !inQ; continue; }
+      if (c === ',' && !inQ) { cols.push(cur.trim()); cur = ''; continue; }
+      cur += c;
+    }
+    cols.push(cur.trim());
+    return cols;
+  }).filter(r => r.some(c => c !== ''));
+}
+
+// ── RENDER PRINCIPAL ──
+function renderAll(rows) {
+  renderStats(rows);
+  renderFilters(rows);
+  renderTabla(rows);
+}
+
+// ── STATS ──
+function renderStats(rows) {
+  const total = rows.length;
+  const canales = [...new Set(rows.map(r => normalizeCanal(r[COL.canal])))].filter(Boolean);
+  const pendientes = rows.filter(r => normalizeEstado(r[COL.estado]) === 'pending').length;
+  const enProceso  = rows.filter(r => normalizeEstado(r[COL.estado]) === 'wip').length;
+  const listos     = rows.filter(r => normalizeEstado(r[COL.estado]) === 'done').length;
+
+  document.getElementById('statsBar').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-label">Total piezas</div>
+      <div class="stat-value accent">${total}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Pendiente</div>
+      <div class="stat-value" style="color:var(--pending)">${pendientes}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">En proceso</div>
+      <div class="stat-value" style="color:var(--wip)">${enProceso}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Listos</div>
+      <div class="stat-value" style="color:var(--done)">${listos}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Canales</div>
+      <div class="stat-value">${canales.length}</div>
+    </div>
+  `;
+}
+
+// ── FILTROS ──
+function renderFilters(rows) {
+  const canales = ['Todos', ...new Set(rows.map(r => r[COL.canal]).filter(Boolean))];
+  const estados = ['Todos', 'Pendiente', 'En proceso', 'Listo'];
+
+  document.getElementById('filtersBar').innerHTML = `
+    <span class="filter-label">Canal</span>
+    ${canales.map(c => `<button class="filter-chip ${filtroCanal===c?'active':''}" onclick="setFiltro('canal','${c}')">${c}</button>`).join('')}
+    <span class="filter-label" style="margin-left:12px">Estado</span>
+    ${estados.map(e => `<button class="filter-chip ${filtroEstado===e?'active':''}" onclick="setFiltro('estado','${e}')">${e}</button>`).join('')}
+  `;
+}
+
+function setFiltro(tipo, val) {
+  if (tipo === 'canal') filtroCanal = val;
+  if (tipo === 'estado') filtroEstado = val;
+  const rows = datosCache[mesActivo] || [];
+  renderFilters(rows);
+  renderTabla(rows);
+}
+
+function filtrarRows(rows) {
+  return rows.filter(r => {
+    const canal  = filtroCanal  === 'Todos' || r[COL.canal]?.toLowerCase().includes(filtroCanal.toLowerCase());
+    const estado = filtroEstado === 'Todos' || normalizeEstadoLabel(r[COL.estado]) === filtroEstado;
+    return canal && estado;
+  });
+}
+
+// ── TABLA ──
+function renderTabla(rows) {
+  const filtered = filtrarRows(rows);
+  const contenido = document.getElementById('contenido');
+
+  if (!filtered.length) {
+    contenido.innerHTML = `<div class="state-box">
+      <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <p>No hay piezas con los filtros seleccionados</p>
+    </div>`;
+    return;
+  }
+
+  // Agrupar por objetivo
+  const grupos = {};
+  filtered.forEach(r => {
+    const obj = r[COL.objetivo] || 'Sin objetivo';
+    if (!grupos[obj]) grupos[obj] = [];
+    grupos[obj].push(r);
+  });
+
+  contenido.innerHTML = Object.entries(grupos).map(([obj, filas]) => `
+    <div class="objetivo-group">
+      <div class="objetivo-header">
+        <span class="objetivo-title">${obj}</span>
+        <span class="objetivo-count">${filas.length} pieza${filas.length!==1?'s':''}</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="col-pieza">Pieza madre</th>
+              <th class="col-canal">Canal</th>
+              <th class="col-formato">Formato</th>
+              <th class="col-dim">Dimensiones</th>
+              <th class="col-tipo">Tipo</th>
+              <th class="col-cant">Cant.</th>
+              <th class="col-copy">Copy</th>
+              <th class="col-obs">Observaciones</th>
+              <th class="col-adapt">Adaptación de</th>
+              <th class="col-link">Pieza</th>
+              <th class="col-estado">Estado</th>
+              <th class="col-cliente">Comentario cliente</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${filas.map(r => renderFila(r)).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderFila(r) {
+  const isAdapt = r[COL.adaptDe] && r[COL.adaptDe].trim() !== '';
+  const canal   = normalizeCanal(r[COL.canal]);
+  const estado  = normalizeEstado(r[COL.estado]);
+  const link    = r[COL.link]?.trim();
+
+  return `<tr class="${isAdapt ? 'is-adaptation' : ''}">
+    <td class="col-pieza">${escHtml(r[COL.pieza] || '—')}</td>
+    <td class="col-canal">${canalBadge(r[COL.canal])}</td>
+    <td class="col-formato">${escHtml(r[COL.formato] || '—')}</td>
+    <td class="col-dim"><span class="dim">${escHtml(r[COL.dims] || '—')}</span></td>
+    <td class="col-tipo">${escHtml(r[COL.tipo] || '—')}</td>
+    <td class="col-cant"><span class="cant">${escHtml(r[COL.cantidad] || '—')}</span></td>
+    <td class="col-copy wrap" title="${escHtml(r[COL.copy] || '')}">${escHtml(truncate(r[COL.copy], 60))}</td>
+    <td class="col-obs wrap">${escHtml(truncate(r[COL.obs], 50))}</td>
+    <td class="col-adapt">${isAdapt ? `<span class="adapt-tag" title="${escHtml(r[COL.adaptDe])}">${escHtml(r[COL.adaptDe])}</span>` : '<span style="color:var(--text3);font-size:11px">—</span>'}</td>
+    <td class="col-link">${link ? `<a class="link-pieza" href="${escHtml(link)}" target="_blank" rel="noopener">
+      <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+      Ver
+    </a>` : '<span class="no-link">—</span>'}</td>
+    <td class="col-estado">${estadoBadge(r[COL.estado])}</td>
+    <td class="col-cliente wrap">${escHtml(truncate(r[COL.cliente], 50)) || '<span style="color:var(--text3)">—</span>'}</td>
+  </tr>`;
+}
+
+// ── HELPERS ──
+function normalizeCanal(c) {
+  if (!c) return '';
+  const cl = c.toLowerCase();
+  if (cl.includes('meta'))       return 'meta';
+  if (cl.includes('tiktok'))     return 'tiktok';
+  if (cl.includes('google'))     return 'google';
+  if (cl.includes('display') || cl.includes('program')) return 'display';
+  return 'other';
+}
+
+function canalBadge(c) {
+  const n = normalizeCanal(c);
+  const map = {
+    meta:    ['badge-meta',    'dot-meta',    'Meta Ads'],
+    tiktok:  ['badge-tiktok',  'dot-tiktok',  'TikTok Ads'],
+    google:  ['badge-google',  'dot-google',  'Google Ads'],
+    display: ['badge-display', 'dot-display', 'Display'],
+  };
+  const [cls, dot, label] = map[n] || ['', '', c || '—'];
+  return `<span class="badge ${cls}"><span class="badge-dot ${dot}"></span>${label}</span>`;
+}
+
+function normalizeEstado(e) {
+  if (!e) return 'empty';
+  const el = e.toLowerCase();
+  if (el.includes('pendiente') || el.includes('pending')) return 'pending';
+  if (el.includes('proceso') || el.includes('process') || el.includes('wip')) return 'wip';
+  if (el.includes('listo') || el.includes('done') || el.includes('ready')) return 'done';
+  return 'empty';
+}
+
+function normalizeEstadoLabel(e) {
+  const n = normalizeEstado(e);
+  return { pending: 'Pendiente', wip: 'En proceso', done: 'Listo', empty: '' }[n] || '';
+}
+
+function estadoBadge(e) {
+  const n = normalizeEstado(e);
+  const map = {
+    pending: ['status-pending', '● Pendiente'],
+    wip:     ['status-wip',     '● En proceso'],
+    done:    ['status-done',    '● Listo'],
+    empty:   ['status-empty',   '— Sin estado'],
+  };
+  const [cls, label] = map[n];
+  return `<span class="status ${cls}">${label}</span>`;
+}
+
+function truncate(str, n) {
+  if (!str) return '';
+  return str.length > n ? str.slice(0, n) + '…' : str;
+}
+
+function escHtml(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function showError(msg) {
+  const el = document.getElementById('errorBar');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+// ── EXPORT CSV ──
+function exportCSV() {
+  const rows = datosCache[mesActivo] || [];
+  if (!rows.length) return;
+  const headers = ['Objetivo','Pieza madre','Canal','Formato','Dimensiones','Tipo archivo','Cantidad','Copy','Observaciones','Adaptación de','Link pieza','Estado','Comentario cliente'];
+  const csv = [headers, ...rows].map(r => r.map(c => `"${String(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv;charset=utf-8;'}));
+  a.download = `GeniusBet_${MESES[mesActivo].nombre.replace(' ','_')}.csv`;
+  a.click();
+}
+
+// ── START ──
+init();
+</script>
+</body>
+</html>
