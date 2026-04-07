@@ -51,10 +51,10 @@ tbody tr:last-child{border-bottom:none}
 tbody tr:hover{background:var(--g50)}
 tbody tr.ia{background:#fafff7}
 td{padding:10px 12px;vertical-align:middle;font-size:12px;color:var(--black)}
-td.wrap{white-space:normal;word-break:break-word;max-width:180px}
+td.wrap{white-space:normal;word-break:break-word;min-width:160px;max-width:280px}
 .ai{padding-left:22px!important;position:relative}
 .ai::before{content:'↳';position:absolute;left:8px;color:var(--g500);font-size:12px}
-.at{font-size:10px;color:var(--g500);background:var(--g100);padding:2px 7px;border-radius:3px;border:1px solid var(--g200);display:inline-block;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle}
+.at{font-size:10px;color:var(--g500);background:var(--g100);padding:2px 7px;border-radius:3px;border:1px solid var(--g200);display:inline-block;white-space:normal;word-break:break-word;vertical-align:middle}
 .bdg{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:600}
 .bd{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .bm{background:#e8f0fe;color:#1877F2}.bt{background:#ffe4ec;color:#c91a4e}.bg2{background:#e8f0fe;color:#3369c4}.bdi{background:#ede9fe;color:#6d28d9}
@@ -233,8 +233,8 @@ function fila(r,idx){
     <td><span class="dim">${e(r[C.dims]||'—')}</span></td>
     <td><span class="mt">${e(r[C.tipo]||'—')}</span></td>
     <td><span class="cv">${e(r[C.cant]||'—')}</span></td>
-    <td class="wrap" title="${e(r[C.copy]||'')}">${e(tr(r[C.copy],70))}</td>
-    <td class="wrap"><span class="mt">${e(tr(r[C.obs],50))}</span></td>
+    <td class="wrap" title="${e(r[C.copy]||'')}">${e(r[C.copy]||'—')}</td>
+    <td class="wrap"><span class="mt">${e(r[C.obs]||'—')}</span></td>
     <td>${ia?`<span class="at" title="${e(r[C.adapt])}">${e(r[C.adapt])}</span>`:'<span class="mt">—</span>'}</td>
     <td>${APPS_SCRIPT_URL
       ?`<input class="li" id="li-${id}" value="${e(lk)}" placeholder="Pegar link...">`
